@@ -1,0 +1,40 @@
+<div class="content-heading">
+   <small>
+    <a [routerLink]=" ['/home'] ">Beranda</a> ->
+    <a [routerLink]=" ['/diskusikategoris/manageDiskusikategoris'] ">Kategori Diskusi</a> ->
+    Perbaharui Kategori Diskusi
+  </small>
+</div>
+
+<div class="panel b">
+  <div class="panel-heading text-bold bg-purple-dark">Perbaharui Kategori Diskusi</div>
+  <div class="panel-body">
+    <form (ngSubmit)="updateCategory(f)" #f="ngForm">
+      <div class="form-group">
+        <label>Nama:</label>
+        <input class="form-control" name="name" type="text" required="" placeholder="Category Name"
+               [(ngModel)]="categoryDetail.title" required="true">
+      </div>
+
+      <!-- <div class="form-group">
+        <label>Icon:</label>
+        <input class="form-control" name="Icon" type="text" required="" placeholder="Enter Icon Name"
+               [(ngModel)]="categoryDetail.icon" required="true">
+        <a class="customIconList" href="https://ionicframework.com/docs/v2/ionicons/" target="_blank">* Icon name</a>
+        <span class="help-text">( Pick icon name from given link.)</span>
+      </div> -->
+
+      <div class="form-group">
+        <label>Keterangan:</label>
+        <textarea class="form-control" name="description" required="" rows="5"
+                  [(ngModel)]="categoryDetail.description" required="true"></textarea>
+      </div>
+      <div class="pull-right">
+        <button class="mb-sm btn btn-purple" type="submit" [disabled]="!f.valid">
+        	Perbaharui
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,141 @@
+<div class="content-heading">
+<small>
+        <a [routerLink]="['/mitras/manageMitras']"> Mitra </a>->
+            Lihat Mitra
+ </small>
+ </div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+        <button class="btn btn-sm btn-default" type="button" 
+            *ngIf="userDetails.isId == false" (click)="createId(userId)">
+            Buat ID Mitra
+        </button>
+
+        <button class="btn btn-sm btn-default" type="button" 
+            *ngIf="userDetails.isId == true" (click)="updateId(userId)" > 
+            Perbaharui ID Mitra
+        </button>
+
+        <button class="btn btn-sm btn-default" type="button" (click)="koordinatRumah(userId)">
+            Koordinat Rumah
+        </button> 
+
+        <div class="col-md-8">
+            Lihat Detail Mitra
+        </div>
+    </div>
+
+    <div class="panel-body">
+        
+        <div class="form-group">
+            <!-- <label class="col-sm-2 control-label custom">Harga*</label> -->
+            <div class="col-sm-10">
+                <div class="panel">
+                    <div class="panel-body mh0">
+                        <div class="row">
+                            <div class="col-md-11 added-block">
+                                <div class="col-md-6">
+                                    <label>Data Pribadi</label>
+                                    <br />
+
+                                    <!-- <p *ngIf="userDetails.pendanaan != 'benar'">
+                                        ID Mitra: Belum Ada
+                                    </p> -->
+
+                                    <label *ngIf="userDetails.isId == true" class="select-item">
+                                        <!-- <p> -->
+                                            ID Mitra: 
+                                            {{userDetails.idwilayah}}.{{userDetails.idbulan}}.{{userDetails.idtahun}}.{{userDetails.idnumber}} - {{userDetails.idbank}}
+                                        <!-- </p> -->
+                                    </label>
+
+
+                                    <label *ngIf="userDetails.isId == false" class="select-item">
+                                        <!-- <p> -->
+                                            ID Mitra: Belum Ada
+                                        <!-- </p> -->
+                                    </label>
+ 
+                                    <!--<p>
+                                        ID Mitra: 
+                                        {{userDetails.idwilayah}}.{{userDetails.idbulan}}.{{userDetails.idtahun}}.{{userDetails.idnumber}} - {{userDetails.idbank}}
+                                    </p> -->
+
+                                    <p>Nama: {{ userDetails.name }} </p>
+                                    <p>Email: {{ userDetails.email }} </p>
+                                    <p>Telepon: {{ userDetails.mobileNo }} </p>
+                                    <p>Kelamin: {{ userDetails.gender }} </p>
+                                    <p>Profesi: {{ userDetails.profesi }} </p>
+                                    <p>Jenis Akun: {{ userDetails.role }} </p>
+                                    
+                                    <p>
+                                        Foto Rumah: 
+                                        <a href="#"  *ngIf="userDetails.fotoRumah != null">
+                                          <img class="media-object img-circle thumb64" src={{userDetails.fotoRumah}}/>
+                                        </a>
+                                    </p>
+
+                                    <p>
+                                        Koordinat Rumah: {{ userDetails.koordinatRumah }}
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Pendanaan</label>
+                                    <br />
+
+                                    <p>Saldo: Rp. {{ menuItems.pendanaanMitra.saldo | number }} </p>
+
+                                    <p *ngFor="let choice of menuItems.pendanaanMitra.tahapan; let i = index" 
+                                        [attr.data-index]="i">
+                                        
+                                        Pendanaan {{ choice.tahappembayaran }} : Rp. {{ choice.jumlahpembayaran }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-10">
+                <div class="panel">
+                    <div class="panel-body mh0">
+                        <div class="row">
+                            <div class="col-md-5 added-block">
+                                <div class="col-md-12">
+                                    <label> Lokasi Lahan</label>
+
+                                    <!-- <p>Luaslahan:   {{ menuItems.addressLahan.luaslahan }} </p>
+                                    <p>Lokasilahan:   {{ menuItems.addressLahan.lokasilahan }} </p>
+                                    <p>Desa:        {{ menuItems.addressLahan.desa }} </p>
+                                    <p>Dusun:       {{ menuItems.addressLahan.dusun }} </p>
+                                    <p>Kecamatan:   {{ menuItems.addressLahan.kecamatan }} </p>
+                                    <p>Kabupaten:   {{ menuItems.addressLahan.kabupaten }} </p>
+                                    <p>Provinsi:   {{ menuItems.addressLahan.provinsi }} </p> -->
+                                    
+                                    <p *ngFor="let a of addressListLahan">
+                                        Lokasi Lahan: {{ a.lokasilahan }} <br />
+                                        Koordinat Lahan: {{ a.koordinatLahan }} <br />
+                                        Luas Lahan: {{ a.luaslahan }} m<sup>2</sup> <br />
+                                        Dusun: {{ a.dusun }} <br />
+                                        Desa: {{ a.desa }} <br />
+                                        Kecamatan: {{ a.kecamatan }} <br />
+                                        Kabupaten: {{ a.kabupaten }} <br />
+                                        Provinsi: {{ a.provinsi }} <br />
+
+                                        <a href="#">
+                                          <img class="media-object img-circle thumb64" src={{a.url}}/>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

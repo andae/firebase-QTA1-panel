@@ -1,0 +1,64 @@
+<div class="content-heading"> 
+ <small><a [routerLink]=" ['/home'] ">Beranda</a> ->
+          <a [routerLink]="['/coupons/all']"> Diskon </a>->
+            Tambahkan Jenis Diskon
+ </small>
+</div>
+<div class="row">
+   <div class="col-sm-2"></div>
+   <div class="col-sm-8">
+   <!-- START panel-->
+      <div class="panel panel-default">
+         <div class="panel-heading"><strong>Baru</strong> Diskon</div>
+         <div class="panel-body">
+            <form (ngSubmit)="onSubmitTag(f)" #f="ngForm">
+               <div class="form-group">
+                  <label>Judul Diskon*</label>
+                  <input class="form-control" type="text" placeholder="Masukkan nama diskon" name="coupanName" id="coupanName" [(ngModel)]="coupon.name"/>
+               </div>
+               <div class="form-group">
+                  <label>Nilai Diskon % *</label>
+                  <input class="form-control" type="number" placeholder="Masukkan jumlah diskon % " name="couponValue" id="couponValue" [(ngModel)]="coupon.value"/>
+               </div>
+
+               <div class="form-group">
+                  <label>Jenis Pengguna *</label>
+                  
+                  <!-- <input class="form-control" type="number" placeholder="Enter Coupon Value % " name="couponValue" id="couponValue" [(ngModel)]="coupon.value"/> -->
+
+                  <select id="jenisakun" name="jenisakun" placeholder="jenisakun" class="form-control input-sm customState" 
+                    required="" [(ngModel)]="coupon.jenisakun" >
+                          
+                    <option>Pilih Jenis Pengguna</option>
+                    <option *ngFor="let item of jenisakuns" value="{{item.jenisakun}}">{{ item.jenisakun | uppercase }}</option>
+                  </select>
+
+               </div>
+
+              <!-- <div class="form-group">
+                <label>Minggu</label>
+                <select id="minggu" name="minggu" placeholder="minggu" class="form-control input-sm customState"
+                        required="" #x (change)="onSelectedChangeMinggu(x.value)">
+                  <option>Pilih Minggu</option>
+                  <option *ngFor="let item of minggulist" value="{{item.minggu}}">{{ item.minggu |uppercase }}</option>
+                </select>
+              </div> -->
+
+
+               <div class="form-group">
+                  <div class="col-md-10">
+                    <div class="col-md-2"></div>
+                       <div class="col-md-9">
+                        <button class="btn btn-primary" type="submit">Tambahkan</button>
+                        </div>
+                        <div class="col-md-1">
+                        <button class="btn btn-danger pull-right s-n-btn" (click)="cancel()">Batalkan</button>
+                    </div>
+                    </div>
+                </div>
+            </form>
+         </div>
+      </div>
+      <!-- END panel-->
+   </div>
+</div>

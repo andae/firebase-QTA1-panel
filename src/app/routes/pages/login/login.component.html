@@ -1,0 +1,56 @@
+<div class="wrapper">
+    <div class="block-center mt-xl wd-xl">
+        <!-- START panel-->
+        <div class="panel panel-dark panel-flat">
+            <div class="panel-heading text-center">
+                <a href="#">
+                    <img class="block-center img-rounded img-responsive" src="assets/img/logo.png" alt="Image" />
+                </a>
+            </div>
+            <div class="panel-body">
+                <p class="text-center pv">MASUK UNTUK MELANJUTKAN</p>
+                <form [formGroup]="valForm" class="form-validate mb-lg" role="form" name="registerForm" novalidate=""
+                      (submit)="submitForm($event, valForm.value)">
+                    <div class="form-group has-feedback">
+                        <input class="form-control" id="exampleInputEmail1" type="email" name="email"
+                               placeholder="Masukkan alamat email" autocomplete="off"  formControlName="email" required=""/>
+                        <span class="fa fa-envelope form-control-feedback text-muted"></span>
+                        <span class="text-danger"
+                              *ngIf="valForm.controls['email'].hasError('required') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">Bagian ini diperlukan</span>
+                        <span class="text-danger"
+                              *ngIf="valForm.controls['email'].hasError('email') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">Bidang ini harus berupa alamat email yang valid</span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input class="form-control" id="exampleInputPassword1" type="password" name="password"
+                               placeholder="Kata Sandi" formControlName="password" required=""/>
+                        <span class="fa fa-lock form-control-feedback text-muted"></span>
+                        <span class="text-danger"
+                              *ngIf="valForm.controls['password'].hasError('required') && (valForm.controls['password'].dirty || valForm.controls['password'].touched)">Bagian ini diperlukan</span>
+                    </div>
+                    <div class="clearfix">
+                        <div class="checkbox c-checkbox pull-left mt0">
+                            <label>
+                                <input type="checkbox" value="" [(ngModel)]="rememberMe" name="account_remember" 
+                                [ngModelOptions]="{standalone: true}" (change)="checkMe()" />
+                                <span class="fa fa-check"></span>Ingat Saya</label>
+                        </div>
+                        <div class="pull-right"><a class="text-muted" [routerLink]="'/recover'">Lupa kata sandi?</a>
+                        </div>
+                    </div>
+                    <button class="btn btn-block btn-success mt-lg" type="submit">Masuk</button>
+                </form>
+                <p class="pt-lg text-center">Butuh pendaftaran?</p><a class="btn btn-block btn-info"
+                                                                   [routerLink]="'/register'">Mendaftar sekarang!</a>
+            </div>
+        </div>
+        <!-- END panel-->
+        <div class="p-lg text-center">
+            <span>&copy;</span>
+            <span>{{ settings.app.year }}</span>
+            <span>-</span>
+            <span>{{ settings.app.name }}</span>
+            <br/>
+            <span>{{ settings.app.description }}</span>
+        </div>
+    </div>
+</div>

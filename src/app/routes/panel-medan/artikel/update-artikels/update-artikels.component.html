@@ -1,0 +1,107 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Beranda</a> ->
+    <a [routerLink]=" ['/artikels/manageArtikels'] ">Artikel</a> ->
+    Perbaharui Artikel
+  </small>
+</div>
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <div class="panel b">
+        <div class="panel-heading text-bold bg-purple-dark">Perbaharui Artikel</div>
+        <div class="panel-body">
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col-lg-5">
+                <input type="file" class="upload" id="inputFileIdGambar" accept="image/*" 
+                  (change)="detectFiles($event)">
+
+                  <button [disabled]="!selectedFiles" (click)="editUploadArtikel()">
+                    Upload Gambar..
+                  </button>
+                </div>
+
+                <div class="col-lg-6">
+                  <a><img [src]="gambarArtikel"></a>
+                  <br />
+                  <div *ngIf="currentUpload">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-animated" 
+                        [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+                      </div>
+                      Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete <br/>
+                      Size: {{ currentUpload?.ukuran | number }} bytes
+                      <br />
+                      <button (click)="taskArtikel.pause()" class="btn-task"> Pause</button>
+                      <button (click)="taskArtikel.resume()" class="btn-task"> Lanjut</button>
+                      <button (click)="taskArtikel.cancel()" class="btn-danger"> Batal</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+          <form role="form" (ngSubmit)="updateNews(f)" #f="ngForm">
+            
+            <!-- Title -->
+            <div class="form-group">
+              <label>Judul</label>
+              <input class="form-control" type="text" required="" name="title" id="title" 
+              [(ngModel)]="news.title" required="true" />
+            </div>
+
+            <!-- Video Url -->
+            <!-- <div class="form-group">
+              <label>Video Url(optional)</label>
+              <input class="form-control" type="text" name="videoUrl" id="videoUrl" 
+              [(ngModel)]="news.videoUrl"/>
+            </div> -->
+
+            <!-- Category Selection -->
+            <div class="form-group">
+              <label>Kategori</label>
+              <select id="Category" name="Category" placeholder="Category" class="form-control input-sm customState"
+                      required="" #d  (change)="onSelectedChange(d.value)">
+                <option>{{news.category}}</option>
+                <option *ngFor="let item of categoriesList" value="{{item.title}}.{{item.$key}}">{{item.title}}</option>
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label>Deskripsi</label>
+                <ck-editor name="description" id="description" [(ngModel)]="news.shortDescription" 
+                  skin="moono-lisa" [fullPage]=" true" #ckEditor="ckEditor" ></ck-editor>
+            </div>
+
+            <!-- <div class="form-group">
+              <label>Deskripsi</label>
+              <textarea class="form-control" name="description" required="" rows="3" id="description"
+                        [(ngModel)]="news.shortDescription" required="true"></textarea>
+            </div> -->
+
+
+            <!-- Discription -->
+            <!-- <div class="row">
+              <div class="col-md-2">
+                <label class="control-label custom">Discription</label>
+              </div>
+            </div> -->
+            <!-- <div id="summernote" class="summernote" >
+              <span></span>
+            </div> -->
+
+
+            <!-- buttons -->
+            <button class="btn btn-info" type="submit"
+                   [disabled]="!(f.valid )"> Perbaharui Artikel
+            </button>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

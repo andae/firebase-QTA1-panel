@@ -1,0 +1,222 @@
+<!-- <div class="content-heading">
+   <button class="btn btn-primary pull-right" type="button">
+      <em class="fa fa-plus-circle fa-fw mr-sm"></em>New Invoice</button>Invoice
+</div> -->
+<div class="waiting-loader" *ngIf="loading">
+    <i class="fa fa-5x fa-spin fa-spinner" aria-hidden="true"></i>
+</div>
+<div class="panel" *ngIf="!loading">
+    <div class="panel-body">
+        <!-- <button class="pull-right btn btn-default btn-sm" type="button">Copy this invoice</button> -->
+        <h3 class="mt0">Invoices {{orderDetails.orderId}}</h3>
+        <hr/>
+        <div class="row mb-lg">
+            <div class="col-lg-4 col-xs-6 br pv">
+                <div class="row">
+                    <div class="col-md-2 text-left visible-md visible-lg">
+                        
+                    </div>
+                    <div class="col-md-10">
+	                    <div class="form-group">
+	                        <div class="col-sm-4">Nama:</div>
+	                        <div class="col-sm-8">
+	                            <strong>{{userDetails.name}}</strong>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <div class="col-sm-4">Email:</div>
+	                        <div class="col-sm-8">
+	                            <strong>{{userDetails.email}}</strong>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <div class="col-sm-4">Telepon:</div>
+	                        <div class="col-sm-8">
+	                            <strong>{{userDetails.mobileNo}}</strong>
+	                        </div>
+	                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-6 br pv">
+                <div class="row">
+                    <div class="col-md-2 text-left visible-md visible-lg">
+                        
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                        <div class="col-sm-4">Nama Lengkap</div>
+                        <div class="col-sm-8">
+                            <strong>{{address.name}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Alamat:</div>
+                        <div class="col-sm-8">
+                            <strong>{{address.address}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Kota:</div>
+                        <div class="col-sm-8">
+                            <strong>{{address.city}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">ZIP/Post</div>
+                        <div class="col-sm-8">
+                            <strong>{{address.pincode}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Telepon</div>
+                        <div class="col-sm-8">
+                            <strong>{{address.mobileNo}}</strong>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix hidden-md hidden-lg">
+                <hr/>
+            </div>
+            <div class="col-lg-4 col-xs-12 pv">
+                <div class="clearfix">
+                    <p class="pull-left">Nomor Invoice </p>
+                    <p class="pull-right mr">{{orderDetails.orderId}}</p>
+                </div>
+                <div class="clearfix">
+                    <p class="pull-left">Tanggal</p>
+                    <p class="pull-right mr">{{orderDetails.createdAt|date}}</p>
+                </div>
+                <div class="clearfix">
+                    <p class="pull-left">Status</p>
+                    <p class="pull-right mr">{{orderDetails.status}}</p>
+                </div>
+            </div>
+       </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead bb">Rincian Pembayaran</p>
+                <form class="form-horizontal p-20">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="col-sm-4">Total :</div>
+                        <div class="col-sm-8">
+                            <strong>Rp {{orderDetails.subTotal |number}}</strong>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="col-sm-4">Diskon:</div>
+                        <div class="col-sm-8">
+                            <strong>Rp {{orderDetails.deductedPrice |number}}</strong>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="col-sm-2">PPN (10%):</div>
+                        <div class="col-sm-8">
+                            <strong>Rp {{orderDetails.tax}}</strong>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="col-sm-4">Total Pembayaran:</div>
+                        <div class="col-sm-8">
+                            <strong>Rp {{orderDetails.grandTotal |number}}</strong>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="col-sm-5">Status Pembayaran:</div>
+                        <div class="col-sm-7">
+                            <span class="label label-success" *ngIf="orderDetails.paymentStatus =='success'">{{orderDetails.paymentStatus}}
+                            </span>
+                             <span class="label label-warning" *ngIf="orderDetails.paymentStatus =='pending'">{{orderDetails.paymentStatus}}
+                             </span>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="col-sm-4">Jenis Pembayaran:</div>
+                        <div class="col-sm-8">
+                            <strong>{{orderDetails.paymentType}}</strong>
+                        </div>
+                    </div>
+                    </div>
+                </form>
+            </div>
+         </div> 
+        <div class="table-responsive table-bordered mb-lg">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item #</th>
+                        <th>Deskripsi</th>
+                        <th>Harga Satuan</th>
+                        <th>Kuantitas</th>
+                        <th class="text-center">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of orderDetails.cart; let i=index ">
+                    <td class="">{{i+1}}</td>
+                    <td class=""> {{data.item.title}}</td>
+                    <td class="">{{data.item.price.value | number}}</td>
+                    <td class="">{{data.item.itemQunatity}}</td>
+                    <td class="text-center">{{data.itemTotalPrice|number}}</td>
+                </tr>
+                <tr>
+                     <td colspan="3"></td>
+                     <td class="text-right"><strong>Total :</strong></td>
+                     <td class="text-center">Rp {{orderDetails.subTotal|number}}</td>
+                  </tr>
+                  <tr>
+                     <td colspan="3"></td>
+                     <td class="text-right"><strong>Diskon :</strong></td>
+                     <td class="text-center">Rp {{orderDetails.deductedPrice|number}}</td>
+                  </tr>
+                  <tr>
+                     <td colspan="3"></td>
+                     <td class="text-right"><strong>PPN ( 10% ):</strong></td>
+                     <td class="text-center">Rp {{orderDetails.tax|number}}</td>
+                  </tr>  
+                  <tr>
+                     <td colspan="3"></td>
+                     <td class="text-right"><strong>Jumlah Total :</strong></td>
+                     <td class="text-center">Rp {{orderDetails.grandTotal|number}}</td>
+                  </tr> 
+            </tbody>
+            </table>
+        </div>
+        <!-- <div class="row">
+            <div class="col-sm-offset-8 col-sm-4 pv">
+                <div class="clearfix">
+                    <p class="pull-left">Subtotal</p>
+                    <p class="pull-right mr">$ 10300</p>
+                </div>
+                <div class="clearfix">
+                    <p class="pull-left">Tax (21%)</p>
+                    <p class="pull-right mr">$ 2700</p>
+                </div>
+                <div class="clearfix">
+                    <p class="pull-left h3">GRAND TOTAL</p>
+                    <p class="pull-right mr h3">$ 13000</p>
+                </div>
+            </div>
+        </div> -->
+        <hr class="hidden-print" />
+        <div class="clearfix">
+            <button class="btn btn-info pull-left mr" (click)="back()" type="button">Kembali
+            </button>
+            <button class="btn btn-success pull-left" type="button" onclick="window.print();">Print</button>
+            <!-- <button class="btn btn-success pull-right" type="button">Send Invoice</button> -->
+        </div>
+    </div>
+</div>

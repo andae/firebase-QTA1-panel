@@ -1,0 +1,71 @@
+<div class="content-heading ">
+    <small><a [routerLink]=" ['/home'] ">Beranda</a> ->
+        <a [routerLink]="['/categories/manageCategories']">Tambah Kategori Baru </a>->
+        Tambah Kategori fv
+    </small>
+</div>
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <div class="panel b">
+        <div class="panel-heading text-bold bg-purple-dark">Tambahkan Diskusi</div>
+        <div class="panel-body">
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col-lg-5">
+                <input type="file" class="upload" id="inputFileIdGambar" accept="image/*" 
+                  (change)="detectFiles($event)">
+
+                <br />
+
+                <button [disabled]="!selectedFiles" (click)="uploadKategori()">
+                  Upload Gambar..
+                </button>
+              </div>
+
+              <div class="col-lg-6">
+                <a>
+                  <img [src]="gambarKategori">
+                </a>
+                <br />
+                <div *ngIf="currentUpload">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-animated" 
+                      [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+                  </div>
+                  Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete <br/>
+                  Size: {{ currentUpload?.ukuran | number }} bytes
+
+                  <br />
+                  <button (click)="taskBesar.pause()" class="btn-task"> Pause</button>
+                  <button (click)="taskBesar.resume()" class="btn-task"> Lanjut</button>
+                  <button (click)="taskBesar.cancel()" class="btn-danger"> Batal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form role="form" (ngSubmit)="onAddNews(f)" #f="ngForm">
+            <div class="form-group">
+              <label>Nama Kategori</label>
+              <input class="form-control" type="text" required="" name="title" id="title" [(ngModel)]="categories.title" required="true" />
+            </div>
+
+             <div class="form-group">
+              <label>Deskripsi Kategori</label>
+              <!-- <ck-editor name="description" id="description" [(ngModel)]="categories.description" 
+                skin="moono-lisa" [fullPage]=" true" #ckEditor="ckEditor" ></ck-editor> -->
+              <textarea class="form-control" rows="3" name="description" id="description" [(ngModel)]="categories.description" required></textarea>
+            </div>
+
+            <button class="btn btn-info" type="submit" [disabled]="!(f.valid)">
+              Tambahkan
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

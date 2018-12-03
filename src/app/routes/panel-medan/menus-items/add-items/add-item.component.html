@@ -1,0 +1,206 @@
+<div class="content-heading"> 
+    <small><a [routerLink]=" ['/home'] ">Beranda</a> ->
+        <a [routerLink]="['/menus/manageItems']"> Produk </a>->
+        Tambahkan Produk Lelang
+    </small>
+</div>
+<!-- START panel-->
+<div class="panel panel-default">
+    <div class="panel-heading">Rincian Produk Lelang</div>
+    <div class="panel-body">
+        <form (ngSubmit)="onSubmitMainItems(f)" #f="ngForm">
+            <fieldset>
+
+                <label class="col-sm-2 control-label custom" for="title">Nama*</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <input class="form-control" name="title" id="title" [(ngModel)]="menusItems.title"
+                                   type="text" required placeholder="Nama Produk"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <label class="col-sm-2 control-label custom">Diskon
+                </label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <input class="form-control" type="number" name="offerPercentage" id="offerPercentage"
+                                   [(ngModel)]="menusItems.offerPercentage" required="" rows="3">
+                        </div>
+                    </div>
+                </div> -->
+
+                <label class="col-sm-2 control-label custom">Kategori</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+
+                            <select class="form-control" name="category" id="category" [(ngModel)]="menusItems.category">
+                                <option>Pilih Kategori</option>
+                                <option *ngFor="let category of catlelang" value="{{category.key}}">
+                                    {{category.title}}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+               
+               <label class="col-sm-2 control-label custom">Stok Tersedia *</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <input class="form-control" type="number" name="stok" id="stok"
+                                [(ngModel)]="menusItems.stok" required="" rows="3">
+                        </div>
+                    </div>
+                </div>
+            
+
+                <label class="col-sm-2 control-label custom">Harga Awal *</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <div class="row">
+                                <div class="col-md-11 added-block" *ngFor="let choice of menusItems.price; let i = index"
+                                     [attr.data-index]="i">
+
+                                     <div class="col-md-5">
+                                        <input class="form-control" type="text" name="pname-{{i}}" id="pname"
+                                               [(ngModel)]="choice.pname" placeholder="Satuan produk / ukuran (100ML, 1Kg)"/>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input currencyMask class="form-control" type="text" name="value-{{i}}" id="value"
+                                               [(ngModel)]="choice.value" placeholder="Harga per satuan">
+                                    </div>
+                                    
+                                    <!-- <div class="col-md-5">
+                                        <input currencyMask class="form-control" type="text" name="value-{{i}}" id="value"
+                                               [(ngModel)]="choice.value" placeholder="Harga">
+                                    </div> -->
+
+                                    <!-- <div class="col-md-1">
+                                        <button class="btn btn-danger" type="button" (click)="removePrice()">
+                                            <em class="fa fa-trash"></em>
+                                        </button>
+                                    </div> -->
+                                </div>
+                                <!-- <div class="col-md-1 added-block">
+                                    <button class="btn btn-sm btn-info" type="button" (click)="addNewPrice()">
+                                        <em class="fa fa-plus"></em>
+                                    </button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- calendar -->
+                <label class="col-sm-2 control-label custom" for="title">Tanggal Berakhir *</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            
+                            <input class="form-control" style="float:none" placeholder="Tanggal Berakhit" ngx-mydatepicker 
+                                name="mydate" [(ngModel)]="menusItems.tanggalberakhir" [options]="myOptions" 
+                                #dp="ngx-mydatepicker" (dateChanged)="onDateChanged($event)"/>
+
+                    <span class="input-group-btn">
+                        <!-- <button type="button" class="btn btn-default" (click)="dp.clearDate()">
+                            <i class="glyphicon glyphicon-remove"></i>
+                            <p>bersihkan</p>
+                        </button> -->
+                        <button type="button" class="btn btn-default" (click)="dp.toggleCalendar()">
+                            <!-- <i class="glyphicon glyphicon-calendar"></i> -->
+                            pilih
+                        </button>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+
+                <label class="col-sm-2 control-label custom">Deskripsi Produk </label>
+                <div class="col-sm-12">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <!-- <textarea class="form-control" name="description" id="description"
+                                      [(ngModel)]="menusItems.description" required="" rows="3"></textarea> -->
+
+                            <ck-editor name="description" id="description" [(ngModel)]="menusItems.description" 
+                                skin="moono-lisa" [fullPage]=" true" #ckEditor="ckEditor" ></ck-editor>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group row">
+                  <div class="col-lg-12">
+                      <div class="col-lg-5">
+                        <label class="file-upload imageButton text-center customUploadButton">
+                          <button class="btn btn-default">
+                            <em class="fa fa-upload mr"></em> 
+                            Gambar Besar
+                          </button>
+                          
+                          <input type="file" class="upload" id="inputFileIdSebelum" accept="image/*"
+                                 (change)="UploadImageSebelum($event)">
+                        </label>
+                      </div>
+                      <div class="col-lg-6">
+                        <a>
+                          <img class="media-object img-thumbnail thumb96" [src]="url1" alt="Image"/>
+                        </a>
+                      </div>
+                  </div>
+                </div>
+                <br />
+
+                <div class="form-group row">
+                  <div class="col-lg-12">
+                    <div class="col-lg-5">
+                      <label class="file-upload imageButton text-center customUploadButton">
+                        <button class="btn btn-default">
+                          <em class="fa fa-upload mr"></em> 
+                          Gambar Kecil
+                        </button>
+                        
+                        <input type="file" class="upload" id="inputFileIdSesudah" accept="image/*"
+                               (change)="UploadImageSesudah($event)">
+                      </label>
+                    </div>
+                    <div class="col-lg-6">
+                      <a>
+                        <img class="media-object img-thumbnail thumb96" [src]="url2" alt="Image"/>
+                      </a>
+                    </div>
+                  </div>
+                </div> -->
+
+                <!-- <label class="col-sm-2 control-label custom">Gambar Produk</label>
+                <div class="col-sm-10">
+                    <div class="row panel">
+                        <div class="col-md-4">
+                            <div class="panel-body mh0 fileUpload btn btn-primary choose-btn">
+                                <span> <i class="fa fa-upload" aria-hidden="true"></i> &nbsp; Unggah Gambar</span>
+                                <input type="file" class="upload" ng2FileSelect [uploader]="uploader" accept="image/*"
+                                       (change)="readUrl($event)">
+                            </div>
+                        </div>
+                        <div class="col-md-6" [hidden]="url ==''">
+                            <img class="media-object img-thumbnail thumb96" [src]="url" alt="Image"/>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="col-md-12">
+                    <button class="btn btn-danger pull-right s-n-btn" (click)="cancel()">Batalkan</button>
+                    <button class="btn btn-primary pull-right s-n-btn" type="submit">
+                        Buat Lelang
+                    </button>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

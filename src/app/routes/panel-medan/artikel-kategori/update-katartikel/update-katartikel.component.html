@@ -1,0 +1,30 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/dashboard'] ">Beranda</a> ->
+    <a [routerLink]=" ['/artikelkategoris/manageArtikelkategoris'] ">Kategori Artikel</a> ->
+    Perbaharui Kategori Artikel
+  </small>
+</div>
+
+<div class="panel b">
+  <div class="panel-heading text-bold bg-purple-dark">Perbaharui Kategori Artikel</div>
+  <div class="panel-body">
+    <form (ngSubmit)="updateCategory(f)" #f="ngForm">
+      <div class="form-group">
+        <label>Nama:</label>
+        <input class="form-control" name="name" type="text" required="" placeholder="Category Name"
+               [(ngModel)]="categoryDetail.title" required="true">
+      </div>
+
+      <div class="form-group">
+        <label>Deskripsi:</label>
+        <textarea class="form-control" name="description" required="" rows="5"
+                  [(ngModel)]="categoryDetail.description" required="true"></textarea>
+      </div>
+      <div class="pull-right">
+        <button class="mb-sm btn btn-purple" type="submit" [disabled]="!f.valid">Perbaharui </button>
+      </div>
+    </form>
+  </div>
+</div>
+

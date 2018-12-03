@@ -1,0 +1,94 @@
+<div class="content-heading">
+ <small><a [routerLink]=" ['/home'] ">Beranda</a> ->
+        <a [routerLink]="['/menu/manageItems']"> Produk Toko </a>->
+            Lihat Produk Toko
+ </small>
+</div>
+<div class="col-masonry">
+        <div class="panel b m0">
+            <div class="panel-heading">
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-4 text-center mb-lg">
+                        <a>
+                            <img class="img-responsive img-thumbnail" src="{{ menuDetails.urlGambarKecil }}" alt="Image" />
+                        </a>
+
+                        <a>
+                            <img class="img-responsive img-thumbnail" src="{{ menuDetails.urlGambarBesar }}" alt="Image" />
+                        </a>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Nama Produk</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p>{{menuDetails.title}}</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Keterangan</h5>
+                        </div>
+                        <div class="col-lg-8" [innerHTML]="menuDetails.description"> </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Kategori</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p>{{menuDetails.categoryTitle}}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Stok Tersedia</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p>{{menuDetails.stok}}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Diskon Pengguna Umum</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p *ngIf="menuDetails.offer==true">{{menuDetails.offerPercentage}}%</p>
+                            <p *ngIf="!menuDetails.offer || menuDetails.offer==false "> Tidak ada diskon </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Diskon Mitra</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p *ngIf="menuDetails.offer==true">{{menuDetails.offerPercentageMitra}}%</p>
+                            <p *ngIf="!menuDetails.offer || menuDetails.offer==false "> Tidak ada diskon </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Harga</h5>
+                        </div>
+                        <div class="col-lg-5" >
+                            <p *ngFor="let choice of menuDetails.price; let i = index" [attr.data-index]="i">
+                                Rp {{ choice.value | number }} / {{ choice.pname }}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel-body">
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,48 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Beranda</a> ->
+    <a [routerLink]=" ['/bimteks/mitra'] ">Bimtek Mitra</a> ->
+    Perbaharui Bimtek Mitra
+  </small>
+</div>
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <div class="panel b">
+        <div class="panel-heading text-bold bg-purple-dark">Perbaharui Bimtek Mitra</div>
+        <div class="panel-body">
+          <form role="form" (ngSubmit)="updateNews(f)" #f="ngForm">
+            
+
+            <!-- Title -->
+            <div class="form-group">
+              <label>Nama Mitra: </label>
+              <input class="form-control" type="text" required="" name="namamitra" id="namamitra" 
+              [(ngModel)]="news.namamitra" required="true" />
+            </div>
+
+            <!-- Category Selection -->
+            <div class="form-group">
+              <label>Kode Mitra: </label>
+              <select id="Codemitra" name="Codemitra" placeholder="Kode Mitra" class="form-control input-sm customState"
+                      required="" #d (change)="onSelectedChange(d.value)">
+                <option>{{news.codemitra}}</option>
+                <option *ngFor="let item of categoriesList" value="{{item.codemitra}}">{{item.codemitra}}</option>
+              </select>
+            </div>
+
+            <!-- buttons -->
+            <button class="btn btn-info" type="submit"
+                   [disabled]="!(f.valid )"> Perbaharui
+            </button>
+          </form>
+          <a *ngIf="dataUploading == 1 ">
+            <em class="fa fa-spinner fa-spin fa-2x customSpinner"></em>
+            <p class="customWarn ">Please Wait Data is uploading &nbsp;&nbsp;<i class="fa fa-hand-stop-o"></i></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <div class="content-heading">
+    <div class="pull-right">
+      <label class="file-upload">
+        <a [routerLink]="'/bimteks/addBimtek'">
+          <button class="btn btn-warning"><em class="fa fa-plus"></em>&nbsp;&nbsp; Tambahkan Bimtek</button>
+        </a>
+
+        <a [routerLink]="'/bimteks/mitra'">
+          <button class="btn btn-warning"><em class="fa fa-plus"></em>&nbsp;&nbsp; Mitra Bimtek</button>
+        </a>
+
+        <a [routerLink]="'/bimteks/codemitra'">
+          <button class="btn btn-warning"><em class="fa fa-plus"></em>&nbsp;&nbsp; Kode Bank</button>
+        </a>
+
+
+        <!-- <a [routerLink]="'/penyuluhanbulan/managePenyuluhanbulan'">
+          <button class="btn btn-warning"><em class="fa fa-plus"></em>&nbsp;&nbsp; Bulan Penyuluhan</button>
+        </a> -->
+
+      </label>
+    </div>
+    <small><a [routerLink]=" ['/home'] ">Beranda</a> -> Bimtek</small>
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+      <form (keyup)="getSearchItems(searchName.value)">
+                    <input class="form-control searchinput" type="text" name="searchVal"
+                           id="searchVal" [(ngModel)]="searchVal"
+                           placeholder="Search" #searchName>
+                </form>
+       </div>         
+    </div>
+  </div>
+
+  <!-- START panel-->
+  <div class="col-lg-4 " *ngFor="let data of newsList; let i = index ">
+    <!-- START widget-->
+    <div class="panel widget bg-purple-dark">
+      <div class="panel-body bg-success img-responsive" [ngStyle]="{ 'background-image': 'url(' + data.thumbSebelum + ')'}"
+           style=" height: 170px;">
+
+        <div class="custom-heading">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+          {{data.Date|date :"short"}}
+        </div>
+        <div class="custom-title">{{data.title}}</div>
+      </div>
+      <!--<div class="panel-body">
+        <div class="row">{{data.shortDescription | limitPipe:200}}</div>
+      </div>-->
+      <a class="panel-footer bg-gray-dark bt0 clearfix btn-block" href="#">
+        <span class="pull-left"><a (click)="sendNotification(i)"> Send Notification &nbsp;&nbsp; </a></span>
+        <span class="text-center">
+                <a (click)="sendNotification(i)"> <em class="fa fa-podcast"></em> </a>
+                </span>
+        <span class="pull-right">
+               <a><em class="fa fa-eye" (click)="viewArtikels(data.id)"></em></a>
+
+               <a><em class="fa fa-pencil-square-o" (click)="updateArtikels(data.id)"></em></a>
+
+               <a><em class="fa fa-trash" (click)="deleteArtikels(data.id,i)"></em></a>
+
+            </span>
+      </a>
+    </div>
+    <!-- END widget-->
+  </div>
+</div>

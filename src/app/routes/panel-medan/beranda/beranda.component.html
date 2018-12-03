@@ -1,0 +1,56 @@
+
+<div class="wrapper">
+
+	<div class="content-heading">
+	    <div class="pull-right">
+	        <label class="file-upload">
+	            <a [routerLink]="'/beranda/addBeranda'">
+	                <button class="btn btn-warning">
+                    <em class="fa fa-plus"></em>&nbsp;&nbsp; Tambah Beranda Android
+                  </button>
+	            </a>
+	        </label>
+	    </div>
+	    <small>
+        <a [routerLink]=" ['/home'] ">Beranda</a> 
+        -> Tampilan Beranda Android
+      </small>
+	</div>
+
+
+	<!-- START panel-->
+  <div class="col-lg-4 " *ngFor="let data of newsList; let i = index ">
+    <!-- START widget-->
+    <div class="panel widget bg-purple-dark">
+      <div class="panel-body bg-success img-responsive" [ngStyle]="{ 'background-image': 'url(' + data.url + ')'}"
+           style=" height: 170px;">
+
+        <div class="custom-heading">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+          {{data.date | date }}
+        </div>
+        <!-- <div class="custom-title">{{data.title}}</div> -->
+      </div>
+      <!--<div class="panel-body">
+        <div class="row">{{data.shortDescription | limitPipe:200}}</div>
+      </div>-->
+      <a class="panel-footer bg-gray-dark bt0 clearfix btn-block" href="#">
+        <!-- <span class="pull-left"><a (click)="sendNotification(i)"> Send Notification &nbsp;&nbsp; </a></span>
+        <span class="text-center">
+                <a (click)="sendNotification(i)"> <em class="fa fa-podcast"></em> </a>
+        </span> -->
+        
+        	<span class="pull-right">
+               <!-- <a><em class="fa fa-eye" (click)="viewArtikels(data.id)"></em></a> -->
+
+               <a><em class="fa fa-pencil-square-o" (click)="updateArtikels(data.id)"></em></a>
+
+               <!-- <a><em class="fa fa-trash" (click)="deleteArtikels(data.id,i)"></em></a> -->
+
+            </span>
+      </a>
+    </div>
+    <!-- END widget-->
+  </div>
+
+</div>

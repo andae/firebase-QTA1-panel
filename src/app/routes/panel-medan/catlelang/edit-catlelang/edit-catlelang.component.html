@@ -1,0 +1,75 @@
+<div class="content-heading ">
+    
+    <small><a [routerLink]=" ['/home'] ">Beranda</a> ->
+           <a [routerLink]="['/catlelang/manageCatlelang']"> Tambah Kategori Baru </a>->
+            Perbaharui Kategori
+    </small>
+</div>
+<div class="container-md">
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-9">
+                <div class="panel b">
+                    <div class="panel-heading  text-bold bg-purple-dark">Perbaharui Kategori</div>
+                    <div class="panel-body">
+
+                      <div class="form-group row">
+                        <div class="col-lg-8">
+                          <div class="col-lg-5">
+
+                            <input type="file" class="upload" id="inputFileIdGambar" accept="image/*" 
+                              (change)="detectFiles($event)">
+                            <button [disabled]="!selectedFiles" (click)="editUploadLelangKategori()">
+                              Upload Gambar..
+                            </button>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <a>
+                              <img [src]="gambarKategori">
+                            </a>
+
+                            <br />
+                            <div *ngIf="currentUpload">
+                              <div class="progress">
+                                <div class="progress-bar progress-bar-animated" 
+                                  [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+                              </div>
+                              Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete <br/>
+                              Size: {{ currentUpload?.ukuran | number }} bytes
+
+                              <br />
+                              <button (click)="taskLelang.pause()" class="btn-task"> Pause</button>
+                              <button (click)="taskLelang.resume()" class="btn-task"> Lanjut</button>
+                              <button (click)="taskLelang.cancel()" class="btn-danger"> Batal</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <form (ngSubmit)="onSubmitCategory(f)" #f="ngForm">
+                            <div class="form-group">
+                                <label>Nama Kategori </label>
+                                <input class="form-control" type="text" required name="title" id="title" [(ngModel)]="catLelangDetails.title" />
+                            </div>
+                            <div class="form-group">
+                                <label>Deskripsi Kategori </label>
+                                <textarea class="form-control" rows="3" name="description" id="description" [(ngModel)]="catLelangDetails.description" required></textarea>
+                            </div>
+
+                            <button class="btn btn-danger pull-right s-n-btn" (click)="cancel()">Batalkan</button>
+                            <button class="btn btn-primary pull-right s-n-btn" type="submit">Perbaharui</button>
+
+                            <p>
+                                <small class="text-muted">* Kolom wajib diisi.</small>
+                            </p>
+                      </form>
+
+                        <!-- <ng4-loading-spinner [threshold]="2000" [loadingText]="'Silahkan Tunggu...'" 
+                          [zIndex]="9999"></ng4-loading-spinner> -->
+
+                    </div>
+                </div>
+    </div>
+  </div>
+</div>

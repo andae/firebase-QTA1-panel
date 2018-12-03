@@ -1,0 +1,139 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Beranda</a> ->
+    <a [routerLink]=" ['/penyuluhans/managePenyuluhan'] ">Penyuluhan</a> ->
+    Perbaharui Penyuluhan
+  </small>
+</div>
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <div class="panel b">
+        <div class="panel-heading text-bold bg-purple-dark">Perbaharui Penyuluhan</div>
+        <div class="panel-body">
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col-lg-5">
+                <input type="file" class="upload" id="inputFileIdGambar" accept="image/*" 
+                  (change)="detectFilesSatu($event)">
+
+                <br />
+
+                <button [disabled]="!selectedFilesSatu" (click)="editUploadPenyuluhanSatu()">
+                  Upload Gambar..
+                </button>
+              </div>
+
+              <div class="col-lg-6">
+                <a>
+                  <img [src]="gambarPenyuluhanSatu">
+                </a>
+                <br />
+                <div *ngIf="currentUploadSatu">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-animated" 
+                      [ngStyle]="{ 'width': currentUploadSatu?.progress + '%' }"></div>
+                  </div>
+                  Progress: {{currentUploadSatu?.name}} | {{currentUploadSatu?.progress}}% Complete <br/>
+                  Size: {{ currentUploadSatu?.ukuran | number }} bytes
+
+                  <br />
+                  <button (click)="taskPenyuluhanSatu.pause()" class="btn-task"> Pause</button>
+                  <button (click)="taskPenyuluhanSatu.resume()" class="btn-task"> Lanjut</button>
+                  <!-- <button (click)="taskPenyuluhanSatu.cancel()" class="btn-danger"> Batal</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col-lg-5">
+                <input type="file" class="upload" id="inputFileIdGambar" accept="image/*" 
+                  (change)="detectFilesDua($event)">
+
+                <br />
+
+                <button [disabled]="!selectedFilesDua" (click)="editUploadPenyuluhanDua()">
+                  Upload Gambar..
+                </button>
+              </div>
+
+              <div class="col-lg-6">
+                <a>
+                  <img [src]="gambarPenyuluhanDua">
+                </a>
+                <br />
+                <div *ngIf="currentUploadDua">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-animated" 
+                      [ngStyle]="{ 'width': currentUploadDua?.progress + '%' }"></div>
+                  </div>
+                  Progress: {{currentUploadDua?.name}} | {{currentUploadDua?.progress}}% Complete <br/>
+                  Size: {{ currentUploadDua?.ukuran | number }} bytes
+
+                  <br />
+                  <button (click)="taskPenyuluhanDua.pause()" class="btn-task"> Pause</button>
+                  <button (click)="taskPenyuluhanDua.resume()" class="btn-task"> Lanjut</button>
+                  <!-- <button (click)="taskPenyuluhanDua.cancel()" class="btn-danger"> Batal</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form role="form" (ngSubmit)="updateBimtekss(f)" #f="ngForm">
+            
+            <div class="form-group">
+              <label>Lokasi: </label>
+              <input class="form-control" type="text" required="" name="location" id="location"  
+              	[(ngModel)]="bimteks.location" required="true" />
+            </div>
+
+            <div class="form-group">
+              <label>Tahun</label>
+              <select id="tahun" name="tahun" placeholder="tahun" class="form-control input-sm customState"
+                      required="" #d (change)="onSelectedChangeTahun(d.value)">
+                <option>{{bimteks.tahun}}</option>
+                <option *ngFor="let item of tahunList" value="{{item.tahun}}">{{ item.tahun }}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Bulan</label>
+              <select id="bulan" name="bulan" placeholder="bulan" class="form-control input-sm customState"
+                      required="" #c (change)="onSelectedChangeBulan(c.value)">
+                <option>{{bimteks.bulan}}</option>
+                <option *ngFor="let item of bulanList" value="{{item.bulan}}">{{ item.bulan |uppercase }}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Minggu</label>
+              <select id="minggu" name="minggu" placeholder="minggu" class="form-control input-sm customState"
+                      required="" #x (change)="onSelectedChangeMinggu(x.value)">
+                <option>{{bimteks.minggu}}</option>
+                <option *ngFor="let item of minggulist" value="{{item.minggu}}">{{ item.minggu |uppercase }}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Keterangan</label>
+                <ck-editor name="description" id="description" [(ngModel)]="bimteks.description" 
+                  skin="moono-lisa" [fullPage]=" true" #ckEditor="ckEditor" ></ck-editor>
+            </div>
+
+            <button class="btn btn-info" type="submit" [disabled]="!(f.valid )">
+                   Perbaharui
+            </button>
+          </form>
+          <!-- <a *ngIf="dataUploading == 1 ">
+            <em class="fa fa-spinner fa-spin fa-2x customSpinner"></em>
+            <p class="customWarn ">Please Wait Data is uploading &nbsp;&nbsp;<i class="fa fa-hand-stop-o"></i></p>
+          </a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

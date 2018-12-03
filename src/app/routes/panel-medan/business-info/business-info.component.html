@@ -1,0 +1,115 @@
+<div class="content-heading">
+    <small><a [routerLink]=" ['/home'] ">Dashboard</a> -> Tentang App QTA-1
+    </small>
+</div>
+<!-- START panel-->
+<div class="panel panel-default">
+    <div class="panel-heading">Tentang App QTA-1</div>
+    <div class="panel-body">
+        <form role="form" (ngSubmit)="onSubmitBusiness(f)" #f="ngForm">
+            <fieldset>
+                <label class="col-sm-2 control-label custom">Email</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <input class="form-control" name="email" id="email" [(ngModel)]="business.email"
+                                   type="Email" placeholder=""/>
+                        </div>
+                    </div>
+                </div>
+
+
+               
+
+
+                <label class="col-sm-2 control-label custom">Deskripsi
+                </label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <textarea class="form-control" name="description" id="description"
+                                      [(ngModel)]="business.description" required="" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <label class="col-sm-2 control-label custom">Alamat
+                </label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <textarea class="form-control" name="address" id="address" [(ngModel)]="business.address"
+                                      required="" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <label class="col-sm-2 control-label custom">Facebook Page Link</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <input class="form-control" name="facebookLink" id="facebookLink"
+                                   [(ngModel)]="business.facebookLink" type="text"
+                                   placeholder=""/>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <label class="col-sm-2 control-label custom">Twitter Page Link</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <input class="form-control" name="twitterLink" id="twitterLink"
+                                   [(ngModel)]="business.twitterLink" type="text"
+                                   placeholder=""/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <label class="col-sm-2 control-label custom">Lokasi Kantor</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <input class="form-control" name="officeLocation" id="officeLocation"
+                                   [(ngModel)]="business.officeLocation" type="text"
+                                   placeholder=""/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <label class="col-sm-2 control-label custom">Nomor Telepon</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <input class="form-control" name="phoneNo" id="phoneNo" [(ngModel)]="business.phoneNo"
+                                   type="number" placeholder=""/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <label class="col-sm-2 control-label custom">Nama App</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+                            <input class="form-control" name="storeName" id="storeName"
+                                   [(ngModel)]="business.storeName" type="text"
+                                   placeholder=""/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <button class="btn btn-primary pull-right" type="submit">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

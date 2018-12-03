@@ -1,0 +1,47 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Dashboard</a> ->
+    <a [routerLink]=" ['/penyuluhans/managePenyuluhan'] ">Manage Penyuluhan</a> ->
+    Detail Penyuluhan
+  </small>
+</div>
+
+<div class="col-masonry">
+  <div class="panel b m0">
+    <div class="panel-heading">
+      <div class="media mt0 row">
+        <div class="col-lg-3">
+          <h5 class=" m0 text-bold">Lokasi : {{bimteks.location}}</h5>
+          <small class="text-muted">Tanggal penyuluhan: {{bimteks.tanggalpenyuluhan | date :"short"}}</small>
+        </div>
+        <div class="media-middle col-lg-8">
+          <h5 class="media-heading text-center text-bold">
+          	{{bimteks.minggu |uppercase}} - Bulan: {{bimteks.bulan |uppercase}} - Tahun: {{bimteks.tahun}} 
+          </h5>
+
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="col-lg-4">
+        <p> Gambar 1
+          <a>
+            <img class="img-responsive img-thumbnail" src={{bimteks.thumbSatu}} alt="Image"/>
+          </a>
+        </p>
+
+        <p>
+        	Gambar 2
+        	<a>
+        		<img class="img-responsive img-thumbnail" src={{bimteks.thumbDua}} alt="Image"/>
+        	</a>
+        </p>
+        
+      </div>
+
+      	<div class="col-lg-8" [innerHTML]="bimteks.description">
+      	</div>
+    </div>
+
+  </div>
+</div>

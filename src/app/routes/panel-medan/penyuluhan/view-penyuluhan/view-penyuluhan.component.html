@@ -1,0 +1,56 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Dashboard</a> ->
+    <a [routerLink]=" ['/bimteks/manageBimtek'] ">Manage Bimtek</a> ->
+    Detail Bimtek
+  </small>
+</div>
+
+<div class="col-masonry">
+  <div class="panel b m0">
+    <div class="panel-heading">
+      <div class="media mt0 row">
+        <div class="col-lg-3">
+          <h5 class=" m0 text-bold">Lokasi : {{news.location}}</h5>
+          <small class="text-muted">{{news.Date|date :"short"}}</small>
+        </div>
+        <div class="media-middle col-lg-8">
+          <h5 class="media-heading text-center text-bold">{{news.title}}</h5>
+          <h5 class="media-heading text-center text-bold">{{news.minggu |uppercase}} - Bulan: {{news.bulan |uppercase}} - Tahun: {{news.tahun}} </h5>
+
+          <h5 class="media-heading text-center text-bold">
+            Mitra: {{ news.penyuluhanmitra }}
+          </h5>
+
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="col-lg-4">
+        <p> Gambar sebelum
+          <a>
+            <img class="img-responsive img-thumbnail" src={{news.thumbSebelum}} alt="Image"/>
+          </a>
+        </p>
+
+        <p>
+        	Gambar Proses
+        	<a>
+        		<img class="img-responsive img-thumbnail" src={{news.thumbSesudah}} alt="Image"/>
+        	</a>
+        </p>
+
+        <p>
+        	Gambar Setelah
+        	<a>
+        		<img class="img-responsive img-thumbnail" src={{news.thumbSetelah}} alt="Image"/>
+        	</a>
+        </p>
+      </div>
+
+      	<div class="col-lg-8" [innerHTML]="news.description">
+      	</div>
+    </div>
+
+  </div>
+</div>

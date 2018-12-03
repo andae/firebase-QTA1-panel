@@ -1,0 +1,137 @@
+<div class="content-heading">
+ <small><a [routerLink]=" ['/home'] ">Beranda</a> ->
+        <a [routerLink]="['/menus/manageItems']"> Produk </a>->
+            Detail Produk Lelang
+ </small>
+</div>
+
+<div class="col-masonry">
+        <div class="panel b m0">
+            <div class="panel-heading">
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-4 text-center mb-lg">
+                        <a>
+                            <img class="img-responsive img-thumbnail" src="{{ menusDetails.urlGambarBesar }}" alt="Image" />
+                        </a>
+
+                        <a>
+                            <img class="img-responsive img-thumbnail" src="{{ menusDetails.urlGambarKecil }}" alt="Image" />
+                        </a>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Nama :</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p>{{menusDetails.title}}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Kategori :</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p>{{menusDetails.categoryTitle}}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Harga Awal :</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p>Rp {{menusDetails.price[0].value | number }} </p>
+                            <!-- <p>
+                                diskon {{ menusDetails.offerPercentage }}% menjadi Rp {{menusDetails.price[0].specialPrice | number }}
+                            </p> -->
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Stok Tersedia :</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p>{{ menusDetails.stok }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Berakhir pada tanggal :</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p>{{ menusDetails.tanggalberakhir }}</p>
+                        </div>
+                    </div>
+
+                    
+                    <!-- <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Deskripsi :</h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <p>{{menusDetails.description}}</p>
+                        </div>
+                    </div> -->
+
+                    <div class="col-lg-8">
+                        <div class="col-lg-3">
+                            <h5 class="media-heading">Keterangan</h5>
+                        </div>
+                        <div class="col-lg-8" [innerHTML]="menusDetails.description"> </div>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="panel-body">
+            </div>
+        </div>
+</div>
+
+<div class="panel custom-comment-panel">
+  <div class="panel-heading">{{ totalPenawar }} &nbsp;Penawar</div>
+  <hr>
+  <div class="panel-body">
+    <div class="media" *ngFor="let data of eventList">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object img-circle thumb64" src={{data.thumb}}/>
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading" id="media-heading">
+          <!-- <a href=""></a> -->
+          <p style="color: #0000ff" >
+            {{data.name}}
+          </p>
+          <small>{{data.createdAt | date }}</small>
+          <a class="anchorjs-link" href="#media-heading">
+            <span class="anchorjs-icon"></span>
+          </a>
+        </h4>
+        <p>
+            Penawaran: Rp. {{data.hargapenawaran | number}}
+        </p>
+
+        <label>
+            Status Lelang: 
+        </label>
+        <button class="button is-small is-success card-footer-item" 
+            *ngIf='data.berhasil' (click)='updateActive(false, data.id)'>
+            Menang 
+        </button>
+        
+        <button class="button is-small is-success card-footer-item" 
+            *ngIf='!data.berhasil' (click)='updateActive(true, data.id)'>
+            Kalah
+        </button>
+
+    </div>
+    <hr/>
+  </div>
+</div>

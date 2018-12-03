@@ -1,0 +1,58 @@
+.thumb96 {
+  width: 96px !important;
+  height: 96px !important;
+  display: block;
+  margin: 0 auto;
+}
+
+.file-upload {
+  margin-top: 1em;
+}
+
+.customSpinner {
+  position: absolute;
+  z-index: 9999;
+  font-size: 12rem;
+  left: 361px;
+  display: block;
+  top: 256px;
+
+}
+
+.customWarn {
+  position: absolute;
+  z-index: 9999;
+  font-size: 2rem;
+  left: 294px;
+  display: block;
+  top: 379px;
+}
+
+.customUploaded {
+  padding-top: 18px;
+  color: slateblue;
+  margin-left: 73px;
+}
+
+.customUploadButton {
+  margin-top: 3em;
+  margin-left: 3em;
+}
+
+.customImage {
+  margin-left: 14em;
+}
+
+.btn-info {
+  width: 10em;
+  float: right;
+}
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+}
+

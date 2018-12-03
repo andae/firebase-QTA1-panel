@@ -1,0 +1,29 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Beranda</a> ->
+    <a [routerLink]=" ['/bimteks/codemitra'] ">Kode Bank Bimtek</a> ->
+    Tambahkan Code Mitra
+  </small>
+</div>
+<!--Header End -->
+<div class="panel b">
+  <div class="panel-heading text-bold bg-purple-dark">Tambahkan Kode Bank</div>
+
+  <div class="panel-body">
+    <form [formGroup]="CodeMitra" (ngSubmit)="tambahCodeMitra(f)" #f="ngForm">
+      <div class="form-group">
+        
+        <label>Kode Bank:</label>
+        <input class="form-control" name="codemitra" type="text" required="" placeholder="Kode Bank" 
+        	formControlName="codemitra" required="true">
+      
+      </div>
+      <div class="pull-right">
+        <button class="mb-sm btn btn-purple" type="submit" [disabled]="!f.valid">
+        	Tambah
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

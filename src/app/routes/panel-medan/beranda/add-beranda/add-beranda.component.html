@@ -1,0 +1,195 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Beranda</a> ->
+    <a [routerLink]=" ['/beranda/manageBeranda'] ">Beranda Android</a> ->
+    Tambahkan Beranda android
+  </small>
+</div>
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <div class="panel b">
+        <div class="panel-heading text-bold bg-purple-dark">Tambahkan Beranda Android</div>
+        <div class="panel-body">
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col-lg-5">
+                <input type="file" class="upload" id="inputFileIdGambar1" accept="image/*" 
+                  (change)="detectFiles1($event)">
+                <br />
+                <button [disabled]="!selectedFiles1" (click)="uploadGambar1()">
+                  Upload Gambar..
+                </button>
+              </div>
+
+              <div class="col-lg-6">
+                <a>
+                  <img [src]="gambar1">
+                </a>
+                <br />
+                <div *ngIf="currentUpload1">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-animated" 
+                      [ngStyle]="{ 'width': currentUpload1?.progress + '%' }"></div>
+                  </div>
+                  Progress: {{currentUpload1?.name}} | {{currentUpload1?.progress}}% Complete <br/>
+                  Size: {{ currentUpload1?.ukuran | number }} bytes
+
+                  <br />
+                  <button (click)="task1.pause()" class="btn-task"> Pause</button>
+                  <button (click)="task1.resume()" class="btn-task"> Lanjut</button>
+                  <button (click)="task1.cancel()" class="btn-danger"> Batal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col-lg-5">
+                <input type="file" class="upload" id="inputFileIdGambar2" accept="image/*" 
+                  (change)="detectFiles2($event)">
+                <br />
+                <button [disabled]="!selectedFiles2" (click)="uploadGambar2()">
+                  Upload Gambar..
+                </button>
+              </div>
+
+              <div class="col-lg-6">
+                <a>
+                  <img [src]="gambar2">
+                </a>
+                <br />
+                <div *ngIf="currentUpload2">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-animated" 
+                      [ngStyle]="{ 'width': currentUpload2?.progress + '%' }"></div>
+                  </div>
+                  Progress: {{currentUpload2?.name}} | {{currentUpload2?.progress}}% Complete <br/>
+                  Size: {{ currentUpload2?.ukuran | number }} bytes
+
+                  <br />
+                  <button (click)="task2.pause()" class="btn-task"> Pause</button>
+                  <button (click)="task2.resume()" class="btn-task"> Lanjut</button>
+                  <button (click)="task2.cancel()" class="btn-danger"> Batal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col-lg-5">
+                <input type="file" class="upload" id="inputFileIdGambar3" accept="image/*" 
+                  (change)="detectFiles3($event)">
+                <br />
+                <button [disabled]="!selectedFiles3" (click)="uploadGambar3()">
+                  Upload Gambar..
+                </button>
+              </div>
+
+              <div class="col-lg-6">
+                <a>
+                  <img [src]="gambar3">
+                </a>
+                <br />
+                <div *ngIf="currentUpload3">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-animated" 
+                      [ngStyle]="{ 'width': currentUpload3?.progress + '%' }"></div>
+                  </div>
+                  Progress: {{currentUpload3?.name}} | {{currentUpload3?.progress}}% Complete <br/>
+                  Size: {{ currentUpload3?.ukuran | number }} bytes
+
+                  <br />
+                  <button (click)="task3.pause()" class="btn-task"> Pause</button>
+                  <button (click)="task3.resume()" class="btn-task"> Lanjut</button>
+                  <button (click)="task3.cancel()" class="btn-danger"> Batal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col-lg-5">
+                <input type="file" class="upload" id="inputFileIdGambar4" accept="image/*" 
+                  (change)="detectFiles4($event)">
+                <br />
+                <button [disabled]="!selectedFiles4" (click)="uploadGambar4()">
+                  Upload Gambar..
+                </button>
+              </div>
+
+              <div class="col-lg-6">
+                <a>
+                  <img [src]="gambar4">
+                </a>
+                <br />
+                <div *ngIf="currentUpload4">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-animated" 
+                      [ngStyle]="{ 'width': currentUpload4?.progress + '%' }"></div>
+                  </div>
+                  Progress: {{currentUpload4?.name}} | {{currentUpload4?.progress}}% Complete <br/>
+                  Size: {{ currentUpload4?.ukuran | number }} bytes
+
+                  <br />
+                  <button (click)="task4.pause()" class="btn-task"> Pause</button>
+                  <button (click)="task4.resume()" class="btn-task"> Lanjut</button>
+                  <button (click)="task4.cancel()" class="btn-danger"> Batal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-8">
+              <div class="col-lg-5">
+                <input type="file" class="upload" id="inputFileIdGambar5" accept="image/*" 
+                  (change)="detectFiles5($event)">
+                <br />
+                <button [disabled]="!selectedFiles5" (click)="uploadGambar5()">
+                  Upload Gambar..
+                </button>
+              </div>
+
+              <div class="col-lg-6">
+                <a>
+                  <img [src]="gambar5">
+                </a>
+                <br />
+                <div *ngIf="currentUpload5">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-animated" 
+                      [ngStyle]="{ 'width': currentUpload5?.progress + '%' }"></div>
+                  </div>
+                  Progress: {{currentUpload5?.name}} | {{currentUpload5?.progress}}% Complete <br/>
+                  Size: {{ currentUpload5?.ukuran | number }} bytes
+
+                  <br />
+                  <button (click)="task5.pause()" class="btn-task"> Pause</button>
+                  <button (click)="task5.resume()" class="btn-task"> Lanjut</button>
+                  <button (click)="task5.cancel()" class="btn-danger"> Batal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <button class="btn btn-primary pull-right s-n-btn" (click)="simpanGambar()">Simpan</button>
+          </div>
+          
+          <!-- <a *ngIf="dataUploading == 1 ">
+            <em class="fa fa-spinner fa-spin fa-2x customSpinner"></em>
+            <p class="customWarn ">Please Wait Data is uploading &nbsp;&nbsp;<i class="fa fa-hand-stop-o"></i></p>
+          </a> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

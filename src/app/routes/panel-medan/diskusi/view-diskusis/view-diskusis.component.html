@@ -1,0 +1,65 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Beranda</a> ->
+    <a [routerLink]=" ['/diskusis/manageDiskusis'] ">Diskusi</a> ->
+    Lihat Diskusi
+  </small>
+</div>
+
+<div class="col-masonry">
+  <div class="panel b m0">
+    <div class="panel-heading">
+      <div class="media mt0 row">
+        <div class="col-lg-3">
+          <h5 class=" m0 text-bold">Kategori : {{news.category}}</h5>
+          <small class="text-muted">{{news.date|date :"short"}}</small>
+        </div>
+        <div class="media-middle col-lg-8">
+          <h5 class="media-heading text-center text-bold">{{news.title}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="col-lg-4">
+        <p>
+          <a>
+            <img class="img-responsive img-thumbnail" src={{news.thumb}} alt="Image"/>
+          </a>
+        </p>
+      </div>
+      <div class="col-lg-8" [innerHTML]="news.shortDescription">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="panel custom-comment-panel">
+  <div class="panel-heading">{{commentList.length}} &nbsp;Komentar</div>
+  <div class="panel-body">
+    <div class="media" *ngFor="let data of commentList">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object img-circle thumb64" src={{data.thumb}}/>
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading" id="media-heading"><a href="">{{data.name}}</a>
+          <small>{{data.createdAt | date }}</small>
+          <a class="anchorjs-link" href="#media-heading">
+            <span class="anchorjs-icon"></span>
+          </a>
+        </h4>
+        <p>{{data.comment}}.</p>
+      </div>
+
+      <div class="media-right">
+        <button class="btn btn-sm btn-danger" type="button" (click)="removeComment(data.$key)">
+          <em class="fa fa-trash-o"></em>
+        </button>
+      </div>
+      
+    </div>
+    <hr/>
+  </div>
+</div>

@@ -1,0 +1,169 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Beranda</a> ->
+    <a [routerLink]=" ['/bimteks/manageBimtek'] ">Bimtek</a> ->
+    Perbaharui Bimtek
+  </small>
+</div>
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <div class="panel b">
+        <div class="panel-heading text-bold bg-purple-dark">Perbaharui Bimtek</div>
+        <div class="panel-body">
+          <form role="form" (ngSubmit)="updateNews(f)" #f="ngForm">
+
+            <div class="form-group row">
+              <div class="col-lg-12">
+                  <div class="col-lg-5">
+                    <label class="file-upload imageButton text-center customUploadButton">
+                      <button class="btn btn-default">
+                        <em class="fa fa-upload mr"></em> 
+                        Gambar Sebelum
+                      </button>
+                      
+                      <input type="file" class="upload" id="inputFileIdSebelum" accept="image/*"
+                             (change)="UploadImageSebelum($event)">
+                    </label>
+                  </div>
+                  <div class="col-lg-6">
+                    <a>
+                      <img class="media-object img-thumbnail thumb96" [src]="url1" alt="Image"/>
+                    </a>
+                  </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-lg-12">
+                <div class="col-lg-5">
+                  <label class="file-upload imageButton text-center customUploadButton">
+                    <button class="btn btn-default">
+                      <em class="fa fa-upload mr"></em> 
+                      Gambar Proses
+                    </button>
+                    
+                    <input type="file" class="upload" id="inputFileIdSesudah" accept="image/*"
+                           (change)="UploadImageSesudah($event)">
+                  </label>
+                </div>
+                <div class="col-lg-6">
+                  <a>
+                    <img class="media-object img-thumbnail thumb96" [src]="url2" alt="Image"/>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-lg-12">
+                <div class="col-lg-5">
+                  <label class="file-upload imageButton text-center customUploadButton">
+                    <button class="btn btn-default">
+                      <em class="fa fa-upload mr"></em> 
+                      Gambar Setelah
+                    </button>
+                    
+                    <input type="file" class="upload" id="inputFileIdSetelah" accept="image/*"
+                           (change)="UploadImageSetelah($event)">
+                  </label>
+                </div>
+                <div class="col-lg-6">
+                  <a>
+                    <img class="media-object img-thumbnail thumb96" [src]="url3" alt="Image"/>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+              <label>Nama Mitra Penyuluhan</label>
+
+              <select id="Penyuluhanmitra" name="Penyuluhanmitra" placeholder="Penyuluhanmitra" 
+                class="form-control input-sm customState" required="" #a (change)="onSelectedChange(a.value)">
+                
+                <option>{{news.penyuluhanmitra}}</option>
+                <option *ngFor="let p of penyuluhanmitraList" value="{{p.$key}}.{{p.namamitra}}">{{ p.namamitra }}</option>
+              </select>
+            </div> -->
+
+            <div class="form-group">
+              <label>Nama Mitra Bimtek</label>
+              <select id="Penyuluhanmitra" name="Penyuluhanmitra" placeholder="Penyuluhanmitra" 
+                class="form-control input-sm customState" required="" #u (change)="onSelectedChange(u.value)">
+
+                <option>{{news.penyuluhanmitra}}</option>
+                <option *ngFor="let p of penyuluhanmitraList" value="{{ p.key }}.{{ p.namamitra }}">{{ p.namamitra }}</option>
+                        
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Lokasi</label>
+              <input class="form-control" type="text" required="" name="location" id="location" 
+              [(ngModel)]="news.location" required="true" />
+            </div>
+
+            <div class="form-group">
+              <label>Judul</label>
+              <input class="form-control" type="text" required="" name="title" id="title" 
+              [(ngModel)]="news.title" required="true" />
+            </div>
+
+            <!-- Short Description -->
+            <!--<div class="form-group">
+              <label>Keterangan</label>
+              <textarea class="form-control" name="description" required="" rows="3" id="description"
+                        [(ngModel)]="news.description" required="true"></textarea>
+            </div>-->
+
+             <div class="form-group">
+              <label>Keterangan</label>
+                <ck-editor name="description" id="description" [(ngModel)]="news.description" 
+                  skin="moono-lisa" [fullPage]=" true" #ckEditor="ckEditor" ></ck-editor>
+            </div>
+
+
+            <div class="form-group">
+              <label>Tahun</label>
+              <select id="tahun" name="tahun" placeholder="tahun" class="form-control input-sm customState"
+                      required="" #d (change)="onSelectedChangeTahun(d.value)">
+                <option>{{news.tahun}}</option>
+                <option *ngFor="let item of tahunList" value="{{item.tahun}}">{{ item.tahun }}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Bulan</label>
+              <select id="bulan" name="bulan" placeholder="bulan" class="form-control input-sm customState"
+                      required="" #c (change)="onSelectedChangeBulan(c.value)">
+                <option>{{news.bulan}}</option>
+                <option *ngFor="let item of bulanList" value="{{item.bulan}}">{{ item.bulan |uppercase }}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Minggu</label>
+              <select id="minggu" name="minggu" placeholder="minggu" class="form-control input-sm customState"
+                      required="" #x (change)="onSelectedChangeMinggu(x.value)">
+                <option>{{news.minggu}}</option>
+                <option *ngFor="let item of minggulist" value="{{item.minggu}}">{{ item.minggu |uppercase }}</option>
+              </select>
+            </div>
+
+
+            <button class="btn btn-info" type="submit" [disabled]="!(f.valid )">
+                   Perbaharui
+            </button>
+
+          </form>
+          <a *ngIf="dataUploading == 1 ">
+            <em class="fa fa-spinner fa-spin fa-2x customSpinner"></em>
+            <p class="customWarn ">Please Wait Data is uploading &nbsp;&nbsp;<i class="fa fa-hand-stop-o"></i></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

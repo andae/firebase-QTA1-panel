@@ -1,0 +1,57 @@
+<div class="content-heading">
+  <small>
+    <a [routerLink]=" ['/home'] ">Beranda</a> ->
+    <a [routerLink]=" ['/bimteks/mitra'] ">Bimtek Mitra</a> ->
+    Tambahkan Bimtek Mitra
+  </small>
+</div>
+<!--Header End -->
+<div class="panel b">
+  <div class="panel-heading text-bold bg-purple-dark">Tambahkan Bimtek Mitra</div>
+
+  <div class="panel-body">
+    <form [formGroup]="PenyuluhanMitra" (ngSubmit)="tambahPenyuluhanMitra(f)" #f="ngForm">
+
+      <div class="form-group">  
+        <label>Nama Mitra:</label>
+        <input class="form-control" name="namamitra" type="text" required="" 
+          placeholder="Nama Bimtek Mitra" formControlName="namamitra" required="true">
+      </div>
+
+      <!-- <label class="col-sm-2 control-label custom">Kategori</label>
+                <div class="col-sm-10">
+                    <div class="panel">
+                        <div class="panel-body mh0">
+
+                            <select class="form-control" name="categoryId" id="categoryId" [(ngModel)]="menuItems.category">
+                                <option>Pilih Kategori</option>
+                                <option *ngFor="let category of categories" value="{{category.key}}">
+                                    {{category.title}}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div> -->
+
+      <div class="form-group">
+        <label>Kode Bank:</label>
+        <select id="Codemitra" name="Codemitra" placeholder="Codemitra" class="form-control input-sm customState" 
+          required="" #x (change)="onSelectedChange(x.value)">    
+            <option>Pilih Kode</option>
+            <option *ngFor="let item of codeMitraList" value="{{ item.codemitra }}">{{ item.codemitra }}</option>
+        </select>
+
+        <!-- <select id="Codemitra" name="Codemitra" placeholder="Kode Bank" class="form-control input-sm customState" 
+          [(ngModel)]="menuItems.category" ></select> -->
+      </div>
+
+      <div class="pull-right">
+        <button class="mb-sm btn btn-purple" type="submit" [disabled]="!f.valid">
+        	Tambah
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

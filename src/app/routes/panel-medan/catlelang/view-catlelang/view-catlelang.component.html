@@ -1,0 +1,39 @@
+<div class="content-heading">
+ <small><a [routerLink]=" ['/home'] ">Beranda</a> ->
+        <a [routerLink]="['/catlelang/manageCatlelang']"> Tambah Kategori Baru </a>->
+            Lihat Kategori 
+ </small>
+ </div>
+<div class="col-masonry">
+        <div class="panel b m0">
+            <div class="panel-heading">
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-4 text-center mb-lg">
+                        <a>
+                            <img class="img-responsive img-thumbnail" src="{{catlelangDetails.thumb}}" alt="Image" />
+                        </a>
+                    </div>
+                    <div class="col-lg-8">
+                    <div class="col-lg-3">
+                        <h5 class="media-heading">Nama :</h5>
+                    </div>
+                    <div class="col-lg-5">
+                        <p>{{catlelangDetails.title}}</p>
+                    </div>
+                    </div>
+                    <div class="col-lg-8">
+                    <div class="col-lg-3">
+                        <h5 class="media-heading">Deskripsi :</h5>
+                    </div>
+                    <div class="col-lg-5">
+                        <p>{{catlelangDetails.description}}</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+            </div>
+        </div>
+    </div>
