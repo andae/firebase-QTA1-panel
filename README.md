@@ -1,4 +1,3 @@
-# Ng2angle
+# QTA1 Panel Admin
 
-	kecil 160x160
-	besar 594x393
+	Firebase [QTA1-panel](https://github.com/biwabit/firebase-QTA1-panel)
